@@ -11,7 +11,8 @@ fullscreen = 1
 android.permissions = VIBRATE
 # Keep logs smaller / simpler
 log_level = 2
-
+android.accept_sdk_license = True
+android.skip_update = False
 [buildozer]
 warn_on_root = 0
 
