@@ -14,16 +14,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build with Buildozer
-        uses: kivy/buildozer-action@v1
-        with:
-          command: buildozer android debug
+      - name: Pull Buildozer image
+        run: docker pull kivy/buildozer:latest
+
+      - name: Build APK
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/home/user/hostcwd" \
+            -v "${{ github.workspace }}/.buildozer:/home/user/.buildozer" \
+            -w /home/user/hostcwd \
+            kivy/buildozer:latest \
+            android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: apk
-          path: bin/*.apk
-        with:
-          name: APK
           path: bin/*.apk

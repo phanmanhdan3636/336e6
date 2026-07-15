@@ -2,4 +2,5 @@
 
 Android build package for GitHub Actions + Buildozer.
 
-Run the workflow in GitHub Actions, then download the APK artifact from `bin/*.apk`.
+After pushing to GitHub, open **Actions** and run **Build Android APK**.
+Download the APK from the workflow artifacts when it finishes.
